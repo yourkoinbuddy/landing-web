@@ -1,0 +1,58 @@
+name: deploy to gh-pages
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '**'
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main
+      
+      - name: setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          
+      - name: cache npm dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+          
+      - name: install dependencies
+        working-directory: .
+        run: npm ci
+        
+      - name: build css
+        working-directory: .
+        run: npm run build:prod
+        
+      - name: prepare production bundle
+        run: |
+          mkdir -p dist
+          # copy source files
+          cp index.html script.js styles.css dist/
+          # copy static assets
+          cp *.png *.ico *.csv dist/ 2>/dev/null || true
+        
+      - name: deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: gh-pages
+          keep_files: false
+

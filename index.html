@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KoinBuddy - Finanças Inteligentes para Empresas e Particulares</title>
+  <link rel="stylesheet" href="styles.css">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap');
+    </style>
+    <!-- Google Analytics -->
+    <!--
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+    -->
+</head>
+<body>
+  <nav>
+    <div class="container">
+      <strong>KoinBuddy</strong>
+    </div>
+  </nav>
+  <main class="container">
+    <section class="hero">
+      <img src="logo-hug.png" alt="KoinBuddy" style="height:100px;width:auto;border-radius:6px;" />
+      <h1>Finanças Inteligentes para Todos</h1>
+      <p>
+        Análise de transações para particulares. Consultoria
+        financeira para empresas.
+      </p>
+    </section>
+    <div class="tabs">
+      <button class="tab active" data-tab="b2c">Para Si</button>
+      <button class="tab" data-tab="b2b">Para Empresas</button>
+    </div>
+    <section class="tab-content" id="b2c-content">
+      <h2>Para Si</h2>
+      <p>
+        Carregue os seus
+        extratos mais recentes, e analisaremos cada transação para
+        descobrir oportunidades de poupança ocultas. Veja
+        exatamente para onde vai o seu dinheiro e descubra
+        quanto pode poupar todos os meses.
+      </p>
+
+      <form class="form-card" id="b2c-form">
+        <h3>Obtenha a sua análise de poupança customizada e gratuita</h3>
+        
+        <p style="color:#666;font-size:0.9rem;margin-bottom:1.5rem;">
+          Enviaremos um relatório personalizado para o seu email com base nas transações que carregar.
+        </p>
+        <article class="success-message" style="display: none;">
+          <strong>Quase lá!</strong>
+          <p>
+            Verifique o seu email para os próximos passos para carregar as suas
+            transações e obter a sua análise gratuita.
+          </p>
+        </article>
+        <div class="grid">
+          <div class="input-wrapper">
+            <label for="name" class="floating-label">Nome</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder=""
+              required
+            />
+          </div>
+          <div class="input-wrapper">
+            <label for="email" class="floating-label">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder=""
+              required
+            />
+          </div>
+        </div>
+        <div class="input-wrapper">
+          <label for="trabalha" class="floating-label">Tipo de trabalho</label>
+          <select id="trabalha" name="trabalha" required>
+            <option value="conta-propria">Conta Própria</option>
+            <option value="conta-outrem" selected>Conta de Outrem</option>
+          </select>
+        </div>
+        <div class="input-wrapper">
+          <label for="objetivo-poupanca" class="floating-label">Qual seria o seu objetivo de poupança?</label>
+          <select id="objetivo-poupanca" name="objetivo-poupanca" required>
+            <option value="fundo-emergencia">Criar um fundo de emergência</option>
+            <option value="pagar-dividas">Pagar dívidas mais rapidamente</option>
+            <option value="investir">Começar a investir</option>
+            <option value="grande-compra">Poupar para uma grande compra</option>
+            <option value="ferias" selected>Poupar para férias</option>
+            <option value="reformar">Poupar para a reforma</option>
+            <option value="casa">Poupar para comprar casa</option>
+            <option value="educacao">Poupar para educação</option>
+            <option value="compreender-gastos">Apenas compreender melhor os meus gastos</option>
+          </select>
+        </div>
+        <div class="grid">
+          <div class="input-wrapper">
+            <label for="banco-select" class="floating-label">Banco</label>
+            <select name="banco" id="banco-select" required>
+              <option value="santander">Santander</option>
+              <option value="activo-bank">Activo Bank</option>
+              <option value="bankinter">Bankinter</option>
+              <option value="montepio">Montepio</option>
+              <option value="teste">Usar transações exemplo</option>
+            </select>
+            <small id="preview-link-container" style="display:none;margin-top:0.25rem;">
+              <a href="transacoes-teste.csv" target="_blank" class="preview-link">
+                Ver transações de exemplo
+              </a>
+            </small>
+          </div>
+          <div class="input-wrapper" id="transacoes-container">
+            <label for="transacoes" class="floating-label">Transações</label>
+            <input
+              type="file"
+              id="transacoes"
+              name="transacoes"
+              accept=".xls,.xlsx"
+              required
+            />
+            <small style="display:block;color:#666;margin-top:0.25rem;font-size:0.875rem;">
+              Ficheiro XLS
+            </small>
+          </div>
+        </div>
+
+        <button type="submit">Obter Análise Gratuita</button>
+      </form>
+    </section>
+    <!-- B2B Content -->
+    <section class="tab-content" id="b2b-content" style="display: none;">
+      <h2>Para a Sua Empresa</h2>
+      <p>
+        Tome decisões financeiras confiantes com
+        projeções baseadas em dados. A nossa ferramenta
+        analisa as finanças da sua empresa e projeta o impacto
+        de mudanças estratégicas antes de as implementar - dando-lhe
+        a clareza e os argumentos de que precisa para orientar
+        a sua empresa com confiança.
+      </p>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <h4>📊 Projeções Baseadas em Dados</h4>
+          <p>Veja o impacto financeiro das decisões antes de as tomar. Sem mais suposições.</p>
+        </div>
+        <div class="benefit-card">
+          <h4>💡 Tomada de Decisões Confiante</h4>
+          <p>Obtenha argumentos claros para justificar mudanças estratégicas junto de stakeholders e investidores.</p>
+        </div>
+        <div class="benefit-card">
+          <h4>🎯 Planeamento de Cenários</h4>
+          <p>Modele diferentes cenários e compreenda os resultados potenciais para a sua empresa.</p>
+        </div>
+        <div class="benefit-card">
+          <h4>⚡ Rápido e Acionável</h4>
+          <p>Insights rápidos que o ajudam a avançar com clareza, não meses de análise.</p>
+        </div>
+      </div>
+      <form class="form-card" id="b2b-form">
+        <h3>Junte-se à nossa lista de espera</h3>
+
+        <article class="success-message" style="display: none;">
+          <strong>Obrigado!</strong>
+          <p>
+            Está na nossa lista de espera! Entraremos em contacto brevemente com mais detalhes.
+          </p>
+        </article>
+        <div class="form-row">
+          <div class="input-wrapper">
+            <label for="firstName" class="floating-label">Nome</label>
+            <input
+              type="text"
+              id="firstName"
+              name="firstName"
+              placeholder=""
+              required
+            />
+          </div>
+          <div class="input-wrapper">
+            <label for="b2b-email" class="floating-label">Email</label>
+            <input
+              type="email"
+              id="b2b-email"
+              name="email"
+              placeholder=""
+              required
+            />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="input-wrapper">
+            <label for="company" class="floating-label">Nome da Empresa</label>
+            <input
+              type="text"
+              id="company"
+              name="company"
+              placeholder=""
+            />
+          </div>
+          <div class="input-wrapper">
+            <label for="revenue" class="floating-label">Selecionar Receita Anual</label>
+            <select id="revenue" name="revenue" required>
+              <option value="none" selected>Prefiro não informar</option>
+              <option value="0">Freelancer ou sem receita previsivel</option>
+              <option value="pre-revenue">
+                Pré-receita / Startup
+              </option>
+              <option value="0-100k">€0 - €100K</option>
+              <option value="100k-500k">€100K - €500K</option>
+              <option value="500k-1m">€500K - €1M</option>
+              <option value="1m-5m">€1M - €5M</option>
+              <option value="5m+">€5M+</option>
+            </select>
+          </div>
+        </div>
+        <div class="input-wrapper">
+          <label for="challenges" class="floating-label">Que decisões financeiras está a considerar?</label>
+          <textarea
+            id="challenges"
+            name="challenges"
+            placeholder=""
+            rows="3"
+            required
+          ></textarea>
+          <small style="display:block;color:#666;margin-top:0.25rem;font-size:x-small;">ex. contratações, expansão, alterações de preços, cortes de despesas</small>
+        </div>
+
+        <button type="submit">Junte-se à Lista de Espera</button>
+      </form>
+    </section>
+  </main>
+  <footer>
+    <div class="container" style="display:flex;flex-direction:column;align-items:center;gap:.75rem;justify-content:center;">
+      <img src="logo.png" alt="KoinBuddy" style="height:40px;width:auto;border-radius:6px;" />
+      <div style="display:flex;flex-direction:column;align-items:center;gap:.5rem;">
+        <small>© 2025 KoinBuddy. Todos os direitos reservados.</small>
+        <small> 🇵🇹</small>
+        <a href="mailto:hello@koinbuddy.com" style="color:#666;text-decoration:none;font-size:0.9rem;">hello@koinbuddy.com</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

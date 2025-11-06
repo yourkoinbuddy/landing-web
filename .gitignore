@@ -1,0 +1,17 @@
+node_modules/
+
+# Build artifacts (these go to 'live' branch only)
+styles.css
+styles.css.map
+
+# Build folder
+/css/
+
+# Logs
+*.log
+
+# System files
+.DS_Store
+Thumbs.db
+
+_pages.md
