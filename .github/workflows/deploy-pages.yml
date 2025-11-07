@@ -47,6 +47,7 @@ jobs:
           cp index.html script.js styles.css dist/
           # copy static assets
           cp *.png *.ico *.csv dist/ 2>/dev/null || true
+          cp CNAME dist/
         
       - name: deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
