@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KoinBuddy - Finanças Inteligentes para Empresas e Particulares</title>
+  <title>KoinBuddy - O seu companheiro de finanças</title>
   <link rel="stylesheet" href="styles.css">
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap');
@@ -27,12 +27,21 @@
   </nav>
   <main class="container">
     <section class="hero">
-      <img src="logo-hug.png" alt="KoinBuddy" style="height:100px;width:auto;border-radius:6px;" />
-      <h1>Finanças Inteligentes para Todos</h1>
+      <img src="logo-hug.png" alt="KoinBuddy" />
+      <h1>O seu companheiro de finanças</h1>
       <p>
         Análise de transações para particulares. Consultoria
         financeira para empresas.
       </p>
+      <small>Produto em desenvolvimento — seja notificado no lançamento.</small>
+      <form id="lead-top-form">
+        <div class="input-wrapper">
+          <label for="lead-top-email" class="floating-label">Email</label>
+          <input type="email" id="lead-top-email" name="email" required />
+        </div>
+        <button type="submit">Manter-me Informado</button>
+        <small class="success-message">Obrigado! Iremos manter‑lo informado.</small>
+      </form>
     </section>
     <div class="tabs">
       <button class="tab active" data-tab="b2c">Para Si</button>
@@ -41,20 +50,19 @@
     <section class="tab-content" id="b2c-content">
       <h2>Para Si</h2>
       <p>
-        Carregue os seus
-        extratos mais recentes, e analisaremos cada transação para
-        descobrir oportunidades de poupança ocultas. Veja
-        exatamente para onde vai o seu dinheiro e descubra
-        quanto pode poupar todos os meses.
+        Uma plataforma que o ajuda a acompanhar as suas finanças e a atingir as suas metas de poupança com clareza e confiança.
+      </p>
+      <p>
+        Para já, carregue os seus extratos mais recentes; Analisaremos as suas transações para descobrir oportunidades de poupança ocultas.
       </p>
 
       <form class="form-card" id="b2c-form">
         <h3>Obtenha a sua análise de poupança customizada e gratuita</h3>
         
-        <p style="color:#666;font-size:0.9rem;margin-bottom:1.5rem;">
-          Enviaremos um relatório personalizado para o seu email com base nas transações que carregar.
+        <p>
+          Enviaremos um relatório personalizado para o seu email em alguns minutos com base nas transações que carregar.
         </p>
-        <article class="success-message" style="display: none;">
+        <article class="success-message">
           <strong>Quase lá!</strong>
           <p>
             Verifique o seu email para os próximos passos para carregar as suas
@@ -69,7 +77,6 @@
               id="name"
               name="name"
               placeholder=""
-              required
             />
           </div>
           <div class="input-wrapper">
@@ -112,9 +119,9 @@
               <option value="activo-bank">Activo Bank</option>
               <option value="bankinter">Bankinter</option>
               <option value="montepio">Montepio</option>
-              <option value="teste">Usar transações exemplo</option>
+              <option value="teste" selected>Quero usar extrato de exemplo</option>
             </select>
-            <small id="preview-link-container" style="display:none;margin-top:0.25rem;">
+            <small id="preview-link-container">
               <a href="transacoes-teste.csv" target="_blank" class="preview-link">
                 Ver transações de exemplo
               </a>
@@ -129,8 +136,8 @@
               accept=".xls,.xlsx"
               required
             />
-            <small style="display:block;color:#666;margin-top:0.25rem;font-size:0.875rem;">
-              Ficheiro XLS
+            <small>
+              Ficheiro de transações ou extrato bancário extraído diretamente do portal do seu banco. Formatos aceites: XLS ou XLSX.
             </small>
           </div>
         </div>
@@ -170,7 +177,7 @@
       <form class="form-card" id="b2b-form">
         <h3>Junte-se à nossa lista de espera</h3>
 
-        <article class="success-message" style="display: none;">
+        <article class="success-message">
           <strong>Obrigado!</strong>
           <p>
             Está na nossa lista de espera! Entraremos em contacto brevemente com mais detalhes.
@@ -184,7 +191,6 @@
               id="firstName"
               name="firstName"
               placeholder=""
-              required
             />
           </div>
           <div class="input-wrapper">
@@ -225,28 +231,106 @@
           </div>
         </div>
         <div class="input-wrapper">
-          <label for="challenges" class="floating-label">Que decisões financeiras está a considerar?</label>
-          <textarea
-            id="challenges"
-            name="challenges"
-            placeholder=""
-            rows="3"
-            required
-          ></textarea>
-          <small style="display:block;color:#666;margin-top:0.25rem;font-size:x-small;">ex. contratações, expansão, alterações de preços, cortes de despesas</small>
+          <label for="challenges" class="floating-label">Quais são os seus principais desafios financeiros?</label>
+          <div class="custom-multiselect">
+            <div class="input-with-icon">
+              <input type="text" id="challenges-trigger" class="custom-select-trigger" readonly placeholder="Selecione os desafios que se aplicam" />
+              <svg class="dropdown-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div id="challenges-dropdown" class="custom-select-dropdown">
+              <label class="custom-select-option">
+                <input type="checkbox" value="fluxo-caixa" class="challenge-checkbox" />
+                <span>Gestão de fluxo de caixa</span>
+              </label>
+              <label class="custom-select-option">
+                <input type="checkbox" value="planeamento-orcamento" class="challenge-checkbox" />
+                <span>Planeamento de orçamento</span>
+              </label>
+              <label class="custom-select-option">
+                <input type="checkbox" value="decisoes-estrategicas" class="challenge-checkbox" />
+                <span>Tomada de decisões estratégicas</span>
+              </label>
+              <label class="custom-select-option">
+                <input type="checkbox" value="controlo-despesas" class="challenge-checkbox" />
+                <span>Controlo de despesas</span>
+              </label>
+              <label class="custom-select-option">
+                <input type="checkbox" value="previsao-financeira" class="challenge-checkbox" />
+                <span>Previsão financeira</span>
+              </label>
+              <label class="custom-select-option">
+                <input type="checkbox" value="analise-rentabilidade" class="challenge-checkbox" />
+                <span>Análise de rentabilidade</span>
+              </label>
+              <label class="custom-select-option">
+                <input type="checkbox" value="gestao-credito" class="challenge-checkbox" />
+                <span>Gestão de crédito e cobrança</span>
+              </label>
+              <label class="custom-select-option">
+                <input type="checkbox" value="investimentos" class="challenge-checkbox" />
+                <span>Decisões de investimento</span>
+              </label>
+              <label class="custom-select-option">
+                <input type="checkbox" value="custos-operacionais" class="challenge-checkbox" />
+                <span>Redução de custos operacionais</span>
+              </label>
+              <label class="custom-select-option">
+                <input type="checkbox" value="crescimento-escalonamento" class="challenge-checkbox" />
+                <span>Planeamento de crescimento/escalonamento</span>
+              </label>
+              <label class="custom-select-option">
+                <input type="checkbox" value="reporting-financeiro" class="challenge-checkbox" />
+                <span>Reporting e análise financeira</span>
+              </label>
+              <label class="custom-select-option">
+                <input type="checkbox" value="outros" class="challenge-checkbox" />
+                <span>Outros</span>
+              </label>
+            </div>
+          </div>
+          <select id="challenges" name="challenges" multiple style="display:none;">
+            <option value="fluxo-caixa">Gestão de fluxo de caixa</option>
+            <option value="planeamento-orcamento">Planeamento de orçamento</option>
+            <option value="decisoes-estrategicas">Tomada de decisões estratégicas</option>
+            <option value="controlo-despesas">Controlo de despesas</option>
+            <option value="previsao-financeira">Previsão financeira</option>
+            <option value="analise-rentabilidade">Análise de rentabilidade</option>
+            <option value="gestao-credito">Gestão de crédito e cobrança</option>
+            <option value="investimentos">Decisões de investimento</option>
+            <option value="custos-operacionais">Redução de custos operacionais</option>
+            <option value="crescimento-escalonamento">Planeamento de crescimento/escalonamento</option>
+            <option value="reporting-financeiro">Reporting e análise financeira</option>
+            <option value="outros">Outros</option>
+          </select>
         </div>
 
         <button type="submit">Junte-se à Lista de Espera</button>
       </form>
     </section>
   </main>
+  <section class="newsletter-section">
+    <div class="container">
+      <h3>Fique a par das novidades</h3>
+      <p>Receba atualizações sobre o lançamento e novidades da KoinBuddy</p>
+      <form id="lead-bottom-form">
+        <div class="input-wrapper">
+          <label for="lead-bottom-email" class="floating-label">Email</label>
+          <input type="email" id="lead-bottom-email" name="email" required />
+        </div>
+        <button type="submit">Subscrever</button>
+        <small class="success-message">Obrigado! Iremos manter‑lo informado.</small>
+      </form>
+    </div>
+  </section>
   <footer>
-    <div class="container" style="display:flex;flex-direction:column;align-items:center;gap:.75rem;justify-content:center;">
-      <img src="logo.png" alt="KoinBuddy" style="height:40px;width:auto;border-radius:6px;" />
-      <div style="display:flex;flex-direction:column;align-items:center;gap:.5rem;">
+    <div class="container">
+      <img src="logo.png" alt="KoinBuddy" />
+      <div>
         <small>© 2025 KoinBuddy. Todos os direitos reservados.</small>
-        <small> 🇵🇹</small>
-        <a href="mailto:hello@koinbuddy.com" style="color:#666;text-decoration:none;font-size:0.9rem;">hello@koinbuddy.com</a>
+        <small>🇵🇹</small>
+        <a href="mailto:hello@koinbuddy.com">hello@koinbuddy.com</a>
       </div>
     </div>
   </footer>
